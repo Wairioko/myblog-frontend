@@ -22,6 +22,8 @@ nav h1 {
   color: #f2f;
   font-weight: bold;
   margin: 0;
+  text-align: center;
+  padding-left: 150px;
 }
 
 .nav-right ul {
@@ -325,6 +327,11 @@ nav button:hover {
 
 .blog-post .content p {
   margin-bottom: 15px;
+}
+
+
+.pagination-controls{
+  text-align: center;
 }
 
 .update-blog{
