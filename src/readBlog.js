@@ -45,6 +45,7 @@ const BlogPost = () => {
     }, [id]);
 
     const handleDelete = async () => {
+        const token = localStorage.getItem('authToken')
         // Prompt the user for confirmation
         const confirmDeletion = window.confirm("Are you sure you want to delete this blog?");
 
@@ -53,7 +54,9 @@ const BlogPost = () => {
         try {
             const response = await fetch(`http://localhost:4000/api/delete-blog/${blog._id}`, {
                 method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' }
+                headers: { 'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
+                 }
             });
 
             if (!response.ok) {
