@@ -1,16 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AuthProvider  from './authProvider';
-import Navbar from './Navbar.js';
-import GetBlogs from './DisplayBlogs.js';
-import UserSignUp from './signup.js';
-import UserLogin from './login.js';
-import CreateBlog from './create-blog.js';
-import BlogPost from './readBlog.js';
-import UpdateBlog from './updateBlog.js';
+import Navbar from '../src/components/Navbar';
+import GetBlogs from '../src/blogs/pages/GetAllBlogs.js';
+import SignUpPage from '../src/users/pages/signup.js';
+import LoginPage from '../src/users/pages/login.js';
+import CreateBlog from '../src/blogs/pages/CreateBlog.js';
+import GetBlog from '../src/blogs/pages/GetBlog.js';
+import UpdateBlog from '../src/blogs/pages/UpdateBlog.js';
+import ProfilePage from '../src/users/pages/profile.js';
+import {EditProfilePage} from '../src/users/pages/editProfile.js';
 
-import ProfilePage from './profile.js';
-import ProfileChangePage from './edit-profile.js';
 
 function App() {
   return (
@@ -19,13 +19,13 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<GetBlogs />} />
-          <Route path="/signup" element={<UserSignUp />} />
-          <Route path="/login" element={<UserLogin />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/create-blog" element={<CreateBlog />} />
-          <Route path="/blog/:id" element={<BlogPost />} />
+          <Route path="/blog/:id" element={<GetBlog />} />
           <Route path="/update-blog/:id" element={<UpdateBlog />} />
           <Route path='/profile' element={<ProfilePage />} />
-          <Route path='/edit-profile' element={<ProfileChangePage />} />
+          <Route path='/edit-profile' element={<EditProfilePage />} />
         </Routes>
       </AuthProvider>
     </Router>
