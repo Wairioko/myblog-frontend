@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +11,7 @@ const useEditProfile = (username) => {
     useEffect(() => {
         if (!username) return;
 
-        fetch('http://localhost:4000/api/edit-profile', {
+        axios.put('http://192.168.56.1:4000/api/edit-profile', {
             method: 'PUT',
             headers: { 
                 'Content-Type': 'application/json', 
