@@ -12,6 +12,10 @@ const GetBlogs = () => {
     if(loading) return <div>Loading...</div>
     if(error) return <div>Error</div>
 
+    if (blogs.length === 0) {
+        return <div>No blogs available</div>;
+    }
+
     const startIndex = (currentPage -1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
     const currentBlogs = blogs.slice(startIndex, endIndex);
