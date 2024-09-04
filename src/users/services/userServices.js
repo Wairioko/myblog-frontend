@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const LoginUser = async (userData) => {
-    return axios.post('http://192.168.56.1:4000/api/login', {
+    return axios.post('https://myblog-backend-production.up.railway.app:4000/api/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ export const LoginUser = async (userData) => {
 
 export const UserSignUp = (userData) => {
     return (  
-        axios.post('http://192.168.56.1:4000/api/users/signup', 
+        axios.post('https://myblog-backend-production.up.railway.app:4000/api/users/signup', 
             {
                 method: "POST",
                 headers: {
@@ -57,7 +57,7 @@ export const GetProfile = async () => {
     const token = localStorage.getItem("authToken");
     
     try {
-        const response = await axios.get(`http://192.168.56.1:4000/api/profile`, {
+        const response = await axios.get(`https://myblog-backend-production.up.railway.app:4000/api/profile`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -81,7 +81,7 @@ export const GetProfile = async () => {
 export const EditProfile = (id, newUsername) => {
     const token = localStorage.getItem("authToken");
     
-        axios.put(`http://192.168.56.1:4000/api/profile:${id}`, 
+        axios.put(`https://myblog-backend-production.up.railway.app:4000/api/profile:${id}`, 
             {
                 method: "PUT",
                 headers: {
