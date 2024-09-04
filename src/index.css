@@ -228,7 +228,8 @@ nav button:hover {
 
 .create-blog-form input[name="title"],
 .create-blog-form input[name="description"],
-.create-blog-form textarea[name="content"]{
+.create-blog-form textarea[name="content"],
+.create-blog-form input[name="image"]  {
   padding-right: 10px;
   width: 100%;
   padding: 1rem;
@@ -427,5 +428,64 @@ nav button:hover {
 .update-delete-container button:active {
   transform: scale(0.95);
 }
+
+
+.profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.profile-header {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.profile-info {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.profile-info p {
+  margin: 10px 0;
+}
+
+.loading, .error {
+  font-size: 1.2rem;
+  color: #ff4d4d;
+  margin-top: 20px;
+}
+
+/* Add this to your CSS file */
+.image-large {
+  width: 100%; /* Full width of the container */
+  height: 600px; /* Maintain aspect ratio */
+  /* max-width: 600px; Limit maximum width */
+}
+
+.image-inline {
+  width: 100%; /* Half width */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  margin: 20px auto; /* Center the image */
+}
+
+.paragraph-container {
+  margin-bottom: 20px; /* Adds spacing between paragraphs */
+}
+
+.description {
+  margin-bottom: 20px;
+}
+
+.content {
+  line-height: 1.6;
+}
+
 
 
