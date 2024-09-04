@@ -9,8 +9,7 @@ const useProfile = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/api/profile', {
-                    
+                const response = await axios.get('https://myblog-backend-production.up.railway.app/api/profile', {                    
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${localStorage.getItem('authToken')}`
@@ -58,6 +57,7 @@ const ProfilePage = () => {
         </div>
     );
 };
+
 
 export default ProfilePage;
 

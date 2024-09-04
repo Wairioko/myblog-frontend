@@ -11,7 +11,7 @@ const useEditProfile = (username) => {
     useEffect(() => {
         if (!username) return;
 
-        axios.put('http://192.168.56.1:4000/api/edit-profile', {
+        axios.put('https://myblog-backend-production.up.railway.app/api/edit-profile', {
         
             headers: { 
                 'Content-Type': 'application/json', 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AuthProvider  from './authProvider';
-import Navbar from '../src/components/Navbar';
+import Navbar from './components/Navbar.js';
 import GetBlogs from '../src/blogs/pages/GetAllBlogs.js';
 import SignUpPage from '../src/users/pages/signup.js';
 import LoginPage from '../src/users/pages/login.js';

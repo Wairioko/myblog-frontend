@@ -12,7 +12,7 @@ export const UserProvider = ({ children }) => {
         const token = localStorage.getItem('authToken');
         if (token) {
             try {
-                const response = await axios.get('https://myblog-backend-production.up.railway.app:4000/api/profile', {
+                const response = await axios.get('https://myblog-backend-production.up.railway.app/api/profile', {
                  
                     headers: {
                         'Authorization': `Bearer ${token}`,

@@ -13,7 +13,7 @@ export const createBlogService = async (blogData, token) => {
     }
 
     try {
-        const response = await axios.post('https://myblog-backend-production.up.railway.app:4000/api/create-blog', formData, {
+        const response = await axios.post('https://myblog-backend-production.up.railway.app/api/create-blog', formData, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'multipart/form-data'
@@ -28,7 +28,7 @@ export const createBlogService = async (blogData, token) => {
 
 export const getAllBlogs = async () => {
     try {
-        const response = await axios.get('https://myblog-backend-production.up.railway.app:4000/api/blogs', {
+        const response = await axios.get('https://myblog-backend-production.up.railway.app/api/blogs', {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -43,7 +43,7 @@ export const getAllBlogs = async () => {
 
 export const getBlogById = async (blogid) => {
     try {
-        const response = await axios.get(`https://myblog-backend-production.up.railway.app:4000/api/blog/${blogid}`, {
+        const response = await axios.get(`https://myblog-backend-production.up.railway.app/api/blog/${blogid}`, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -57,7 +57,7 @@ export const getBlogById = async (blogid) => {
 
 export const deleteBlog = async (blogid, token) => {
     try {
-        const response = await axios.delete(`https://myblog-backend-production.up.railway.app:4000/api/blog/delete/${blogid}`, {
+        const response = await axios.delete(`https://myblog-backend-production.up.railway.app/api/blog/delete/${blogid}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
@@ -89,7 +89,7 @@ export const updateBlog = async (blogData, token, blogid) => {
     }
 
     try {
-        const response = await axios.put(`https://myblog-backend-production.up.railway.app:4000/api/update-blog/${blogid}`, formData, {
+        const response = await axios.put(`https://myblog-backend-production.up.railway.app/api/update-blog/${blogid}`, formData, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'multipart/form-data'
