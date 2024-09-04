@@ -9,8 +9,7 @@ const useSignUp = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async () => {
         const userData = { username, email, password };
         try {
             await UserSignUp(userData);
