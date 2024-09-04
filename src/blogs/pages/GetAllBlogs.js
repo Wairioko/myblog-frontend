@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ITEMS_PER_PAGE = 3;
 
-const GetBlogs = () => {
+const GetAllBlogs = () => {
     const { blogs, loading, error } = useGetAllBlogs();
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -65,3 +65,7 @@ const GetBlogs = () => {
         </div>
     );
 };
+
+
+
+export default GetAllBlogs
