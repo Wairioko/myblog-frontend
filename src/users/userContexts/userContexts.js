@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-
+import axios from 'axios';
 // Create Context
 export const UserContext = createContext();
 
@@ -12,14 +12,14 @@ export const UserProvider = ({ children }) => {
         const token = localStorage.getItem('authToken');
         if (token) {
             try {
-                const response = await fetch('http://localhost:4000/api/profile', {
-                    method: 'GET',
+                const response = await axios.get('https://myblog-backend-production.up.railway.app:4000/api/profile', {
+                 
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     }
                 });
-                const data = await response.json();
+                const data = await response.data();
                 setProfile(data);
             } catch (error) {
                 console.error('Error fetching user profile:', error);

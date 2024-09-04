@@ -1,5 +1,4 @@
-import axios from 'axios'
-
+import axios from 'axios';
 
 export const createBlogService = async (blogData, token) => {
     const formData = new FormData();
@@ -13,140 +12,100 @@ export const createBlogService = async (blogData, token) => {
         }
     }
 
-    return axios.post('https://myblog-backend-production.up.railway.app:4000/api/create-blog', {
-        method: "POST",
-        headers: {
-            'Authorization': `Bearer ${token}`
-        },
-        body: formData
-    })
-    .then(async (response) => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            return response.json().then(err => {
-                throw new Error(err.message || 'Failed to create blog');
-            });
-        }
-    });
+    try {
+        const response = await axios.post('https://myblog-backend-production.up.railway.app:4000/api/create-blog', formData, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        return response.data;  // Axios automatically parses JSON
+    } catch (error) {
+        console.error('Error creating blog:', error.message);
+        throw new Error(error.response?.data?.message || 'Failed to create blog');
+    }
 };
 
 export const getAllBlogs = async () => {
     try {
         const response = await axios.get('https://myblog-backend-production.up.railway.app:4000/api/blogs', {
-            method: "GET",
             headers: {
                 'Content-Type': 'application/json',
             },
         });
-
-        // Check if the response is okay
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-
-        // Parse the JSON data
-        const data = await response.json();
-
-        // Log and return the data
-        console.log(data);
-        return data;
-
+        return response.data;
     } catch (err) {
-        console.error('Error:', err);
+        console.error('Error fetching blogs:', err.message);
         alert('Failed to get blogs');
+        throw err;
     }
 };
 
 export const getBlogById = async (blogid) => {
     try {
         const response = await axios.get(`https://myblog-backend-production.up.railway.app:4000/api/blog/${blogid}`, {
-            method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             }
         });
-        
-        if (!response.ok) {
-            throw new Error('Unable to fetch Blog');
-        }
-        
-        const data = await response.json();
-        return data;
+        return response.data;
     } catch (error) {
-        console.error('Error fetching blog:', error);
-        throw error;  // Rethrow the error to be caught in UseGetBlog
+        console.error('Error fetching blog:', error.message);
+        throw error;
     }
 };
 
-
-
-export const deleteBlog = (blogid, token) => {
-  
-    return (  
-        axios.delete(`https://myblog-backend-production.up.railway.app:4000/api/blog/delete/${blogid}`, {
-            method:`DELETE`,
-            contentType: 'application/json',
-            Authentication: `Bearer ${token}`
-        })
-        .then(response => {
-            if(response.ok){
-                alert("Blog Successfully deleted");
-                return response.json
-
-            }else(
-                alert('Unable to delete blog')
-            )
-        })
-        .then(data => {
-            return data
-        })
-        .catch((error) => {
-            console.log(error.message);
-            alert('Unable to delete Blog')
-
-        })
-    );
-}
-
+export const deleteBlog = async (blogid, token) => {
+    try {
+        const response = await axios.delete(`https://myblog-backend-production.up.railway.app:4000/api/blog/delete/${blogid}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        if (response.status === 200) {
+            alert("Blog Successfully deleted");
+        } else {
+            alert('Unable to delete blog');
+        }
+    } catch (error) {
+        console.error('Error deleting blog:', error.message);
+        alert('Unable to delete Blog');
+    }
+};
 
 export const updateBlog = async (blogData, token, blogid) => {
     const formData = new FormData();
-    for (const key in blogData){
-        if(key === 'images'){
-            for (let i=0; i < blogData.images.length; i++){
-                formData.append('images', blogData.images[i])
+    for (const key in blogData) {
+        if (key === 'images') {
+            for (let i = 0; i < blogData.images.length; i++) {
+                formData.append('images', blogData.images[i]);
             }
-        }else if(key === 'imageUrls'){
+        } else if (key === 'imageUrls') {
             formData.append('imageUrls', JSON.stringify(blogData.imageUrls));
-        } else{
-            formData.append(key, blogData[key])
+        } else {
+            formData.append(key, blogData[key]);
         }
     }
+
     try {
-        const response = await axios.put(`https://myblog-backend-production.up.railway.app:4000/api/update-blog/${blogid}`, 
-        {   
-            method: 'PUT', 
+        const response = await axios.put(`https://myblog-backend-production.up.railway.app:4000/api/update-blog/${blogid}`, formData, {
             headers: {
-                "Authorization": `Bearer ${token}`
-            },
-            body: formData
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data'
+            }
         });
 
-        const data = await response.json();
-        
-        if (response.ok) {
+        if (response.status === 200) {
             alert("Blog updated successfully");
-
         } else {
-            alert(`Failed to update blog: ${data.message}`);
+            alert(`Failed to update blog: ${response.data.message}`);
         }
     } catch (error) {
+        console.error('Error updating blog:', error.message);
         alert("Unable to update Blog");
-        console.log(error.message);
     }
-}
- 
+};
 
  
 
