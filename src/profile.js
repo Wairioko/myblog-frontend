@@ -9,21 +9,18 @@ const useProfile = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await fetch('http://localhost:4000/api/profile', {
-                    method: 'GET',
+                const response = await axios.get('http://localhost:4000/api/profile', {
+                    
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${localStorage.getItem('authToken')}`
                     },
                 });
 
-                if (response.ok) {
-                    const data = await response.json();
-                    setProfile(data);
-                } else {
-                    const errMessage = await response.json();
-                    setError(errMessage.message || "Failed to fetch profile data");
-                }
+                
+                const data = await response.data();
+                setProfile(data);
+                
             } catch (error) {
                 setError("Error fetching profile data: " + error.message);
             } finally {

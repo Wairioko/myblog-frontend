@@ -12,14 +12,14 @@ const useEditProfile = (username) => {
         if (!username) return;
 
         axios.put('http://192.168.56.1:4000/api/edit-profile', {
-            method: 'PUT',
+        
             headers: { 
                 'Content-Type': 'application/json', 
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({ 'username': username })
         })
-        .then(response => response.json())
+        .then(response => response.data())
         .then(data => {
             setData(data);
             alert("User Profile updated successfully")
