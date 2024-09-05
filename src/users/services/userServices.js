@@ -22,7 +22,7 @@ export const LoginUser = async (userData) => {
 
 export const UserSignUp = async (userData) => {
     try {
-        const response = await axios.post('https://myblog-backend-production.up.railway.app/api/users/signup', userData, {
+        const response = await axios.post('https://myblog-backend-production.up.railway.app/api/signup', userData, {
             headers: {
                 'Content-Type': 'application/json',
             }
@@ -59,11 +59,11 @@ export const GetProfile = async () => {
     }
 };
 
-export const EditProfile = async (id, newUsername) => {
+export const EditProfile = async (newUsername) => {
     const token = localStorage.getItem("authToken");
 
     try {
-        const response = await axios.put(`https://myblog-backend-production.up.railway.app/api/profile/${id}`, newUsername, {
+        const response = await axios.put(`https://myblog-backend-production.up.railway.app/api/edit-profile`, newUsername, {
             headers: {
                 "Authorization": `Bearer ${token}`,
                 'Content-Type': 'application/json',

@@ -57,7 +57,7 @@ export const getBlogById = async (blogid) => {
 
 export const deleteBlog = async (blogid, token) => {
     try {
-        const response = await axios.delete(`https://myblog-backend-production.up.railway.app/api/blog/delete/${blogid}`, {
+        const response = await axios.delete(`https://myblog-backend-production.up.railway.app/api/delete-blog/${blogid}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
