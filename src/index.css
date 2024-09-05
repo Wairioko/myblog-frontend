@@ -4,6 +4,14 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
   background-color: #f0f2f5;
+  box-sizing: border-box; /* Ensures padding and borders are included in width/height */
+}
+
+/* Apply box-sizing globally to include padding and border in element width */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 /* Navigation Bar */
@@ -14,65 +22,10 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  flex-wrap: wrap;
 }
 
-.nav-left, .nav-right {
-  display: flex;
-  align-items: center;
-}
-
-.nav-center {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-nav h1 {
-  color: #f2f;
-  font-weight: bold;
-  margin: 0;
-  text-align: center;
-}
-
-.nav-right ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 1rem;
-}
-
-.nav-right li {
-  margin: 0;
-}
-
-nav a {
-  color: #ecf0f1;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-  padding: 0.5rem 1rem;
-}
-
-nav a:hover {
-  color: #3498db;
-}
-
-nav button {
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-weight: bold;
-}
-
-nav button:hover {
-  background-color: #c0392b;
-}
+/* Other styles... */
 
 /* Login Page */
 .login-page, .signup-page {
@@ -81,7 +34,7 @@ nav button:hover {
   justify-content: center;
   height: 100vh;
   background-color: #f0f2f5;
-  padding: 1rem; /* Added padding */
+  padding: 1rem;
 }
 
 .login-form, .signup-form {
@@ -90,7 +43,7 @@ nav button:hover {
   border-radius: 9px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px; /* Adjusted for better mobile experience */
+  max-width: 400px;
 }
 
 .login-form h1, .signup-form h1 {
@@ -119,6 +72,7 @@ nav button:hover {
   border-radius: 10px;
   font-size: 1rem;
   transition: border-color 0.3s ease;
+  box-sizing: border-box; /* Ensures form fields respect width */
 }
 
 .login-form input[type="submit"],
@@ -134,7 +88,7 @@ nav button:hover {
 /* Blog Creation */
 .create-blog, .update-blog {
   display: block;
-  padding: 2rem; /* Adjusted padding */
+  padding: 2rem;
   background-color: #f0f2f5;
   border-radius: 20px;
 }
@@ -145,8 +99,8 @@ nav button:hover {
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 500px; /* Adjusted for mobile */
-  margin: 0 auto; /* Centered form */
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .create-blog-form h1, .update-blog-form h1 {
@@ -168,6 +122,7 @@ nav button:hover {
   border-radius: 10px;
   font-size: 1rem;
   transition: border-color 0.3s ease;
+  box-sizing: border-box; /* Ensures form fields respect width */
 }
 
 .create-blog-form input[type="submit"], 
@@ -183,7 +138,7 @@ nav button:hover {
 
 /* Blog Content */
 .blogs-content {
-  padding: 1rem; /* Added padding */
+  padding: 1rem;
 }
 
 .blog-preview {
@@ -192,12 +147,12 @@ nav button:hover {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(203, 16, 228, 0.801);
   background-color: white;
+  text-decoration: none; /* Remove underline from blog preview */
 }
 
-.blog-preview .author {
-  font-style: italic;
-  color: #48d9e4;
-  margin-bottom: 10px; /* Adjusted margin */
+.blog-preview a {
+  text-decoration: none; /* Ensure any links within preview aren't underlined */
+  color: inherit; /* Maintain color inheritance */
 }
 
 .blog-preview:hover {
@@ -224,13 +179,13 @@ nav button:hover {
 .blog-post .author {
   font-style: italic;
   color: #48d9e4;
-  margin-bottom: 10px; /* Adjusted margin */
+  margin-bottom: 10px;
 }
 
 .blog-post .description {
   font-weight: bold;
   font-size: 1.1em;
-  margin-bottom: 10px; /* Adjusted margin */
+  margin-bottom: 10px;
   color: #34495e;
 }
 
@@ -250,7 +205,7 @@ nav button:hover {
 }
 
 .profile-header {
-  font-size: 1.5rem; /* Adjusted size */
+  font-size: 1.5rem;
   color: #333;
   margin-bottom: 20px;
 }
@@ -268,25 +223,25 @@ nav button:hover {
 @media (max-width: 768px) {
   nav {
     padding: 1rem;
-    flex-direction: column; /* Stack items */
+    flex-direction: column;
   }
 
   .nav-center {
-    margin-bottom: 1rem; /* Space between items */
+    margin-bottom: 1rem;
   }
 
   nav h1 {
-    padding-left: 0; /* Remove extra padding */
+    padding-left: 0;
   }
 
   .nav-right ul {
     flex-direction: column;
-    gap: 0.5rem; /* Reduce gap */
+    gap: 0.5rem;
   }
 
   .login-form, .signup-form, .create-blog-form, .update-blog-form {
     padding: 1rem;
-    max-width: 100%; /* Use full width */
+    max-width: 100%;
   }
 
   .profile-container {
@@ -300,28 +255,29 @@ nav button:hover {
 
 @media (max-width: 480px) {
   nav {
-    padding: 0.5rem; /* Reduce padding */
+    padding: 0.5rem;
   }
 
   .login-form, .signup-form, .create-blog-form, .update-blog-form {
-    padding: 0.5rem; /* Reduce padding */
+    padding: 0.5rem;
   }
 
   .login-form input[type="submit"], 
   .signup-form input[type="submit"],
   .create-blog-form input[type="submit"],
   .update-blog-form input[type="submit"] {
-    padding: 0.5rem; /* Reduce padding */
+    padding: 0.5rem;
   }
 
   .blog-post h1 {
-    font-size: 1.5em; /* Smaller heading */
+    font-size: 1.5em;
   }
 
   .blog-post .description, 
   .blog-post .author {
-    margin-bottom: 5px; /* Less margin */
+    margin-bottom: 5px;
   }
 }
+
 
 
