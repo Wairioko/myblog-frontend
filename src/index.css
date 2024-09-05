@@ -1,21 +1,43 @@
+/* General responsive adjustments */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+/* Navbar adjustments */
 nav {
   background-color: #2c3e50;
-  padding: 1rem 2rem;
-  border-radius: 3px;
+  padding: 1rem;
+  border-radius: 0;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nav-left, .nav-right {
-  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-.nav-center {
-  flex: 1;
+@media (min-width: 768px) {
+  nav {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.nav-left, .nav-right, .nav-center {
+  width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .nav-left, .nav-right, .nav-center {
+    width: auto;
+    margin-bottom: 0;
+  }
 }
 
 nav h1 {
@@ -23,7 +45,7 @@ nav h1 {
   font-weight: bold;
   margin: 0;
   text-align: center;
-  padding-left: 150px;
+  padding-left: 0;
 }
 
 .nav-right ul {
@@ -31,460 +53,77 @@ nav h1 {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 1rem;
-}
-
-.nav-right li {
-  margin: 0;
-}
-
-nav a {
-  color: #ecf0f1;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-  padding: 0.5rem 1rem;
-}
-
-nav a:hover {
-  color: #3498db;
-}
-
-nav button {
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-weight: bold;
-}
-
-nav button:hover {
-  background-color: #c0392b;
-}
-
-.login-page{
-  display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  height: 100vh;
-  background-color: #f0f2f5;
-  border-radius: 3px;
+  gap: 0.5rem;
 }
 
-.login-form{
-  background-color: white;
-  padding: 6rem;
-  border-radius: 9px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 70%;
-  /* max-width: 800px; */
-}
-
-.login-form h1 {
-  text-align: center;
-  color: rgba(2, 18, 36, 0.795);
-  margin-bottom: 1.5rem;
-}
-
-.login-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #555;
-}
-
-.login-form input[type="email"],
-.login-form input[type="password"] {
-  width: 100%;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-}
-
-
-
-.login-form input[type="submit"]{
-  cursor: pointer;
-  width:71cqmax;
-  border-top: 100px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #5aee73;
-  border-radius: 9px;
-  font-size: medium;
-  font-weight: 400;
-}
-
-.login-form input[type="submit"]:hover{
-  background-color: #51e89d;
-}
-
-
-.signup-page{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f0f2f5;
-  border-radius: 20px;
-}
-
-
-
-.signup-form{
-  background-color: white;
-  padding: 6rem;
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 900px;
-
-}
-
-
-.signup-form label{
-  display: block;
-  /* margin-bottom: 1rem; */
-  padding: 10px;
-  color: #555;
-  font-weight: 500;
-}
-
-.signup-form input[name="username"],
-.signup-form input[name="email"],
-.signup-form input[name="password"] {
-  width: 100%;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-}
-
-.signup-form h1{
-  text-align: center;
-}
-
-.signup-form input[type="submit"]{
-  width: 104%;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #5aee73;
-  border-radius: 9px;
-  font-size: medium;
-  font-weight: 400;
-  align-self: center;
-}
-
-
-.create-blog{
-  display:block;
-  /* justify-content:space-around; */
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
-  background-color: #f0f2f5;
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.create-blog-form{
-  display: block;
-  background-color: white;
+/* Form adjustments */
+.login-form, .signup-form, .create-blog-form, .update-blog-form {
   padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: auto;
-  height: auto;
-}
-
-.create-blog-form h1{
-  text-align: center;
-}
-
-.create-blog-form label{
-  display: block;
-  /* margin-bottom: 1rem; */
-  padding: 10px;
-  color: #555;
-  font-weight: 500;
-
-}
-
-
-.create-blog-form input[name="title"],
-.create-blog-form input[name="description"],
-.create-blog-form textarea[name="content"],
-.create-blog-form input[name="image"]  {
-  padding-right: 10px;
-  width: 100%;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-  
-
-}
-
-
-.create-blog-form input[type="submit"]{
-  cursor: pointer;
-  width:103%;
-  border-top: 100px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #5aee73;
-  border-radius: 9px;
-  font-size: medium;
-  font-weight: 400;
-}
-
-.create-blog-form input[type="submit"]:hover{
-  background-color: #51e89d;
-}
-
-.blogs-content {
-  display: block;
-  align-items: flex-start;
-}
-
-.blogs-content a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.blog-preview {
-  display: block;
-  margin-bottom: 2rem;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(203, 16, 228, 0.801);
-  background-color: white;
-}
-
-.blog-preview .author{
-  font-style: italic;
-  color: #48d9e4;
-  margin-bottom: 20px;
-}
-
-.blog-preview:hover {
-  box-shadow: 0 0 15px rgba(203, 16, 228, 0.9);
-  transform: translateY(-3px);
-  transition: all 0.3s ease;
-}
-
-
-
-.blog-post {
-  max-width: 800px;
+  width: 90%;
+  max-width: 500px;
   margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  color: #333;
 }
 
-.blog-post h1 {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-  color: #2c3e50;
-}
-
-.blog-post .author {
-  font-style: italic;
-  color: #48d9e4;
-  margin-bottom: 20px;
-}
-
-.blog-post .description {
-  font-weight: bold;
-  font-size: 1.1em;
-  margin-bottom: 20px;
-  color: #34495e;
-}
-
-.blog-post .content {
-  text-align: justify;
-}
-
-.blog-post .content p {
-  margin-bottom: 15px;
-}
-
-
-.pagination-controls{
-  text-align: center;
-}
-
-.update-blog{
-  display: block;
-  margin-bottom: 2rem;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(203, 16, 228, 0.801);
-  background-color: white;
-  height: auto;
-  
-}
-
-.update-blog-form{
-  display: block;
-  padding: 6rem;
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: auto ;
-  height: auto;
-}
-
-.update-blog-form label{
-  display: block;
-  padding: 10px;
-  color: #555;
-  font-weight: 500;
-
-}
-
-.update-blog-form input[name="title"],
-.update-blog-form input[name="description"],
-.update-blog-form textarea[name="content"]{
+.login-form input[type="submit"],
+.signup-form input[type="submit"],
+.create-blog-form input[type="submit"],
+.update-blog-form input[type="submit"] {
   width: 100%;
+}
+
+/* Blog content adjustments */
+.blog-preview, .blog-post {
   padding: 1rem;
   margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-
 }
 
-.update-blog-form input[type="submit"]{
-  cursor: pointer;
-  width: 103%;
-  border-top: 100px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #5aee73;
-  border-radius: 9px;
-  font-size: medium;
-  font-weight: 400;
+.image-large, .image-inline {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
 }
 
-.update-blog-form input[type="submit"]:hover{
-  background-color: #51e89d;
+/* Responsive typography */
+h1 {
+  font-size: 1.8rem;
 }
 
-.update-delete-container {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
 }
 
-.update-delete-container button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
-}
-
-.update-delete-container button[name="delete-blog"] {
-  background-color: #e74c3c;
-  color: rgb(233, 11, 11);
-}
-
-.update-delete-container button[name="update-blog"] {
-  background-color: #3498db;
-  color: white;
-}
-
-.update-delete-container button:hover {
-  opacity: 0.9;
-  transform: scale(1.05);
-}
-
-.update-delete-container button:active {
-  transform: scale(0.95);
-}
-
-
+/* Profile container adjustment */
 .profile-container {
+  width: 90%;
   max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  padding: 1rem;
 }
 
-.profile-header {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 20px;
+/* Update-delete container adjustment */
+.update-delete-container {
+  flex-direction: column;
 }
 
-.profile-info {
-  font-size: 1.2rem;
-  color: #555;
+@media (min-width: 768px) {
+  .update-delete-container {
+    flex-direction: row;
+  }
 }
 
-.profile-info p {
-  margin: 10px 0;
+/* General spacing and sizing adjustments */
+input, textarea, button {
+  font-size: 16px;
+  padding: 0.5rem;
 }
 
-.loading, .error {
-  font-size: 1.2rem;
-  color: #ff4d4d;
-  margin-top: 20px;
-}
-
-/* Add this to your CSS file */
-.image-large {
-  width: 100%; /* Full width of the container */
-  height: 600px; /* Maintain aspect ratio */
-  /* max-width: 600px; Limit maximum width */
-}
-
-.image-inline {
-  width: 100%; /* Half width */
-  height: auto; /* Maintain aspect ratio */
-  display: block;
-  margin: 20px auto; /* Center the image */
-}
-
-.paragraph-container {
-  margin-bottom: 20px; /* Adds spacing between paragraphs */
-}
-
-.description {
-  margin-bottom: 20px;
-}
-
-.content {
-  line-height: 1.6;
+.login-page, .signup-page, .create-blog {
+  padding: 1rem;
+  min-height: 100vh;
+  height: auto;
 }
 
 
