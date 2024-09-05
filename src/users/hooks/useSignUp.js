@@ -11,12 +11,13 @@ const useSignUp = () => {
 
     const handleSubmit = async () => {
         const userData = { username, email, password };
-        try {
-            await UserSignUp(userData);
-            navigate('/');
-        } catch (err) {
-            setError('Signup failed. Please try again.');
-        }
+        await UserSignUp(userData).then((data) => {
+            if(data){
+                navigate('/')
+            }
+        })
+           
+        
     };
 
     return { email, setEmail, username, setUsername, password, setPassword, handleSubmit, error };
