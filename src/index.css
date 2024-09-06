@@ -160,6 +160,7 @@ nav button:hover {
   display: block;
   margin-bottom: 2rem;
   padding: 1rem;
+  text-decoration: none;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(203, 16, 228, 0.801);
   background-color: white;
