@@ -1,6 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../authProvider';
+
+
 const Navbar = () => {
     const { isAuthenticated, handleLogout } = useContext(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
