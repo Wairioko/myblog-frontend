@@ -167,7 +167,12 @@ nav button:hover {
 }
 
 .blog-preview a {
-  text-decoration: none;
+  text-decoration: none !important;
+  color: inherit; /* Ensure link color is consistent */
+}
+
+.blog-preview a:hover {
+  text-decoration: none !important;
 }
 
 
