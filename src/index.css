@@ -49,17 +49,11 @@ nav h1 {
   gap: 1rem;
 }
 
-nav a {
-  color: #ecf0f1;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-  padding: 0.5rem;
-}
-
-nav button {
-  background-color: #ec4af1;
-  color: white;
+/* Assuming the login and signup buttons are within .nav-right */
+.nav-right a, /* In case they are links styled as buttons */
+.nav-right button {
+  background-color: #ec4af1; /* Original button color */
+  color: white; /* Original text color */
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
@@ -68,15 +62,19 @@ nav button {
   font-weight: bold;
 }
 
-nav button:hover {
-  background-color: #ec4af1;
+/* Hover state */
+.nav-right a:hover,
+.nav-right button:hover {
+  background-color: #ff6af1; /* New hover color */
+  color: #ffffff; /* Ensure text is still visible */
 }
+
 
 .nav-toggle {
   display: none;
   background: none;
   border: none;
-  color: #ecf0f1;
+  color: #65d7f3;
   font-size: 1.5rem;
   cursor: pointer;
 }
