@@ -156,7 +156,7 @@ nav button:hover {
   padding: 1rem;
 }
 
-.blog-preview {
+.blog-preview  a{
   display: block;
   margin-bottom: 2rem;
   padding: 1rem;
