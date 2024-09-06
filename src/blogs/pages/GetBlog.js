@@ -24,46 +24,49 @@ const DisplayBlog = () => {
 
   const canEditOrDelete = token && profile?.username === blog.author;
 
-  return (
-      <div className="blog-post">
-          <h1>{blog.title}</h1>
-          {blog.imageUrls && blog.imageUrls[0] && (
-              <img src={blog.imageUrls[0]} alt="" className="image-large" />
-          )}
-          <p className="author">Posted by {blog.author}</p>
-          <p className="description">{blog.description}</p>
-          <div className="content">
-              {blog.content && blog.content.split('\n\n').map((paragraph, index, arr) => {
-                  const middleIndex = Math.ceil(arr.length / 2) - 1;
-                  return (
-                      <div key={index} className="paragraph-container">
-                          <p>{paragraph}</p>
-                          {index === middleIndex && blog.imageUrls[1] && (
-                              <img
-                                  src={blog.imageUrls[1]}
-                                  alt=""
-                                  className="image-inline"
-                                  style={{ display: 'block', margin: '20px auto' }}
-                              />
-                          )}
-                      </div>
-                  );
-              })}
-          </div>
-          {canEditOrDelete && (
-              <div className="update-delete-container">
-                  <button name="delete" onClick={onDelete}>Delete Blog</button>
-                  <button
-                      name="update-blog"
-                      onClick={() => {
-                          navigate(`/update-blog/${blog._id}`, { state: { blog } });
-                      }}
-                  >
-                      Update Blog
-                  </button>
-              </div>
-          )}
+  const renderContent = () => {
+    if (!blog.content) return null;
+
+    const paragraphs = blog.content.split('\n').filter(para => para.trim() !== '');
+    const middleIndex = Math.floor(paragraphs.length / 2);
+
+    return paragraphs.map((paragraph, index) => (
+      <div key={index} className="paragraph-container">
+        <p>{paragraph}</p>
+        {index === middleIndex && blog.imageUrls && blog.imageUrls[1] && (
+          <img
+            src={blog.imageUrls[1]}
+            alt=""
+            className="image-inline"
+            style={{ display: 'block', margin: '20px auto' }}
+          />
+        )}
       </div>
+    ));
+  };
+
+
+  return (
+    <div className="blog-post">
+      <h1>{blog.title}</h1>
+      {blog.imageUrls && blog.imageUrls[0] && (
+        <img src={blog.imageUrls[0]} alt="" className="image-large" />
+      )}
+      <p className="author">Posted by {blog.author}</p>
+      <p className="description">{blog.description}</p>
+      <div className="content">{renderContent()}</div>
+      {canEditOrDelete && (
+        <div className="update-delete-container">
+          <button name="delete" onClick={onDelete}>Delete Blog</button>
+          <button
+            name="update-blog"
+            onClick={() => navigate(`/update-blog/${blog._id}`, { state: { blog } })}
+          >
+            Update Blog
+          </button>
+        </div>
+      )}
+    </div>
   );
 };
 
