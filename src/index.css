@@ -224,6 +224,7 @@ nav button:hover {
     font-size: 1.1em;
     margin-bottom: 20px;
     color: #34495e;
+    text-align: justify;
   }
   
   .blog-post .content {
@@ -231,6 +232,7 @@ nav button:hover {
   }
 
   .blog-post .content p {
+    text-align: justify;
     margin-bottom: 15px;
   }
   
