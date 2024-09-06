@@ -167,11 +167,13 @@ nav button:hover {
 }
 
 .blog-preview a,
-.blog-preview a:-webkit-any-link {
+.blog-preview a:visited,
+.blog-preview a:hover,
+.blog-preview a:active {
   text-decoration: none !important;
-  color: inherit !important;  /* Inherit the color from the parent element */
-  cursor: default;  /* Change cursor to default or any desired value */
+  color: inherit !important; /* Ensures that no red color is applied */
 }
+
 
 
 .blog-preview a:hover {
