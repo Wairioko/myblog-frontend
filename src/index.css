@@ -166,10 +166,13 @@ nav button:hover {
   transition: all 0.3s ease;
 }
 
-.blog-preview a {
+.blog-preview a,
+.blog-preview a:-webkit-any-link {
   text-decoration: none !important;
-  color: inherit; /* Ensure link color is consistent */
+  color: inherit !important;  /* Inherit the color from the parent element */
+  cursor: default;  /* Change cursor to default or any desired value */
 }
+
 
 .blog-preview a:hover {
   text-decoration: none !important;
