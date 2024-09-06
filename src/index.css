@@ -49,11 +49,10 @@ nav h1 {
   gap: 1rem;
 }
 
-/* Assuming the login and signup buttons are within .nav-right */
+
 .nav-right a, /* In case they are links styled as buttons */
 .nav-right button {
-  background-color: #ec4af1; /* Original button color */
-  color: white; /* Original text color */
+  color: #ec4af1; /* Original text color */
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
@@ -65,7 +64,7 @@ nav h1 {
 /* Hover state */
 .nav-right a:hover,
 .nav-right button:hover {
-  background-color: #ff6af1; /* New hover color */
+  background-color: #4cf12b; /* New hover color */
   color: #ffffff; /* Ensure text is still visible */
 }
 
