@@ -75,13 +75,13 @@ export const deleteBlog = async (blogid, token) => {
 };
 
 
-
 export const updateBlog = async (blogid, blogData) => {
     const formData = new FormData();
+    
     for (const key in blogData) {
-        if (key === 'images') {
-            for (let i = 0; i < blogData.images.length; i++) {
-                formData.append('images', blogData.images[i]);
+        if (key === 'newImages') {
+            for (let i = 0; i < blogData.newImages.length; i++) {
+                formData.append('images', blogData.newImages[i]);
             }
         } else if (key === 'imageUrls') {
             formData.append('imageUrls', JSON.stringify(blogData.imageUrls));
@@ -92,7 +92,8 @@ export const updateBlog = async (blogid, blogData) => {
 
     const token = localStorage.getItem('authToken');
 
-    console.log(`Updating blog with ID: ${blogid}`); 
+    console.log(`Updating blog with ID: ${blogid}`);
+    console.log('Update data:', Object.fromEntries(formData));
 
     try {
         const response = await axios.put(`https://myblog-backend-production.up.railway.app/api/update-blog/${blogid}`, formData, {
@@ -103,15 +104,18 @@ export const updateBlog = async (blogid, blogData) => {
         });
 
         if (response.status === 200) {
-            alert("Blog updated successfully");
+            console.log("Blog updated successfully", response.data);
+            return response.data;
         } else {
-            alert(`Failed to update blog: ${response.data.message}`);
+            throw new Error(`Failed to update blog: ${response.data.message}`);
         }
     } catch (error) {
         console.error('Error updating blog:', error.message);
-        alert("Unable to update Blog");
+        throw error;
     }
 };
+
+
 
  
 

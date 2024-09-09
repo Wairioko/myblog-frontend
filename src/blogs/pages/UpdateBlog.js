@@ -15,6 +15,7 @@ const UpdateBlog = () => {
         handleImageChange,
         handleRemoveExistingImage,
         handleSubmit,
+        error,
         loading,
         existingImageUrls = []
     } = useUpdateBlog();
@@ -35,6 +36,7 @@ const UpdateBlog = () => {
 
     return (  
         <div className="update-blog">
+             {error && <div className="error">{error}</div>}
             <form onSubmit={handleSubmit} className="update-blog-form">
                 <label>Title</label>
                 <input 

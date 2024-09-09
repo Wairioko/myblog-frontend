@@ -2,32 +2,43 @@ import { useState, useEffect } from "react";
 import { updateBlog } from "../services/blogService";
 import { useNavigate, useParams } from "react-router-dom";
 
-export const useUpdateBlog = (blog = {}) => { // Add a default empty object for blog
-    const { id } = useParams(); 
-    const [title, setTitle] = useState(blog.title || '');
-    const [description, setDescription] = useState(blog.description || '');
-    const [content, setContent] = useState(blog.content || '');
-    const [images, setImages] = useState([]);
-    const [existingImageUrls, setExistingImageUrls] = useState(blog.imageUrls || []);
+export const useUpdateBlog = (initialBlog = {}) => {
+    const { id } = useParams();
+    const [title, setTitle] = useState(initialBlog.title || '');
+    const [description, setDescription] = useState(initialBlog.description || '');
+    const [content, setContent] = useState(initialBlog.content || '');
+    const [newImages, setNewImages] = useState([]);
+    const [existingImageUrls, setExistingImageUrls] = useState(initialBlog.imageUrls || []);
     const [isLoading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
-        
         e.preventDefault();
         setLoading(true);
+        setError(null);
         
-        const newBlogData = {
-            title, description, content, images, imageUrls: existingImageUrls
-        };
+        const updatedFields = {};
+
+        if (title !== initialBlog.title) updatedFields.title = title;
+        if (description !== initialBlog.description) updatedFields.description = description;
+        if (content !== initialBlog.content) updatedFields.content = content;
+        
+        if (newImages.length > 0) updatedFields.newImages = newImages;
+        
+        if (JSON.stringify(existingImageUrls) !== JSON.stringify(initialBlog.imageUrls)) {
+            updatedFields.imageUrls = existingImageUrls;
+        }
 
         try {
-            console.log('Blog ID:', id);
-            await updateBlog(id, newBlogData);
+            console.log('Updating blog with ID:', id);
+            console.log('Update data:', updatedFields);
+            const updatedBlog = await updateBlog(id, updatedFields);
+            console.log('Blog updated successfully:', updatedBlog);
             navigate('/blog/' + id);
-
         } catch (error) {
-            console.log(error.message);
+            console.error('Error updating blog:', error.message);
+            setError(error.message);
         } finally {
             setLoading(false);
         }
@@ -39,7 +50,7 @@ export const useUpdateBlog = (blog = {}) => { // Add a default empty object for 
             alert("You can only have a maximum of 2 images in total");
             return;
         }
-        setImages(selectedFiles);
+        setNewImages(selectedFiles);
     };
     
     const handleRemoveExistingImage = (urlToRemove) => {
@@ -53,10 +64,12 @@ export const useUpdateBlog = (blog = {}) => { // Add a default empty object for 
         setDescription,
         setTitle,
         setContent,
-        images,
+        newImages,
+        existingImageUrls,
         handleImageChange,
         handleRemoveExistingImage,
         handleSubmit,
-        isLoading
+        isLoading,
+        error
     };
 };
