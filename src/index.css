@@ -1,12 +1,14 @@
 /* Base styles */
 * {
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.6;
+  text-decoration: none;
 }
 
 /* Navigation */
@@ -89,7 +91,7 @@ nav h1 {
 
 /* Hover state */
 .nav-left a:hover,
-.nav-left button:hover {
+.nav- button:hover {
   background-color: #92e1f5; /* New hover color */
   color: #ffffff; /* Ensure text is still visible */
 }
@@ -177,6 +179,7 @@ nav h1 {
 /* Blog list and individual blog post */
 .blogs-content {
   padding: 1rem;
+  text-decoration: none !important;
 }
 
 .blog-preview{
