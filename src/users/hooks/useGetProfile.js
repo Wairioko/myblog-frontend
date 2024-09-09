@@ -24,7 +24,7 @@ const useGetProfile = () => {
     }, []); // Empty dependency array means this runs once on mount
 
     const handleEditProfile = () => {
-        navigate('/navigate');
+        navigate('/edit-profile');
     };
 
     return { profile, handleEditProfile, loading, error };
