@@ -36,15 +36,6 @@ const UpdateBlog = () => {
         }
     }, [location.state?.blog]);
 
-    // Handle change in title
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setBlog((prev) => ({
-            ...prev,
-            [name]: value
-        }));
-    };
-
     return (  
         <div className="update-blog">
             <form onSubmit={handleSubmit} className="update-blog-form">
@@ -53,7 +44,7 @@ const UpdateBlog = () => {
                     value={blog.title} 
                     type="text" 
                     name="title" 
-                    onChange={handleChange}
+                    onChange={(e) => setTitle(e.target.value)}
                 />
                 
                 <label>Description</label>
@@ -61,14 +52,14 @@ const UpdateBlog = () => {
                     value={blog.description} 
                     type="text" 
                     name="description" 
-                    onChange={handleChange}
+                    onChange={(e) => setDescription(e.target.value)}
                 />
                 
                 <label>Content</label>
                 <textarea 
                     value={blog.content} 
                     name="content" 
-                    onChange={handleChange}
+                    onChange={(e) => setContent(e.target.value)}
                 />
                 
                 {existingImageUrls.length > 0 && (
