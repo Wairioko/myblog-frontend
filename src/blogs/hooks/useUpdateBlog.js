@@ -11,16 +11,8 @@ export const useUpdateBlog = (blog = {}) => { // Add a default empty object for 
     const [existingImageUrls, setExistingImageUrls] = useState(blog.imageUrls || []);
     const [isLoading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const token = localStorage.getItem('authToken');
 
-    // useEffect(() => {
-    //     if (blog) { // Ensure blog is defined before setting states
-    //         setTitle(blog.title || '');
-    //         setDescription(blog.description || '');
-    //         setContent(blog.content || '');
-    //         setExistingImageUrls(blog.imageUrls || []);
-    //     }
-    // }, [blog]); // Re-run the effect if blog changes
-    
     const handleSubmit = async (e) => {
         
         e.preventDefault();
@@ -32,8 +24,8 @@ export const useUpdateBlog = (blog = {}) => { // Add a default empty object for 
 
         try {
             
-            await updateBlog(id, newBlogData);
-            
+            await updateBlog(id, token ,newBlogData);
+            navigate('/blog/' + id);
 
         } catch (error) {
             console.log(error.message);
