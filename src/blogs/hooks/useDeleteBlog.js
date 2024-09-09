@@ -8,13 +8,6 @@ const useDeleteBlog = async (id, token) => {
     if (!confirmDeletion) return;
 
     try {
-        const blog = await getBlogById(id);  
-
-        if (!blog) {
-            alert("Blog not found");
-            return false;
-        }
-
         await deleteBlog(blog._id, token);
         return true;
     } catch (error) {
