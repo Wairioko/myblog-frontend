@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
+
 // Create Context
 export const UserContext = createContext();
 
@@ -13,14 +14,13 @@ export const UserProvider = ({ children }) => {
         if (token) {
             try {
                 const response = await axios.get('https://myblog-backend-production.up.railway.app/api/profile', {
-                 
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     }
                 });
-                const data = await response.data();
-                setProfile(data);
+                const data = response.data;  // Removed () after data
+                setProfile(data);                
             } catch (error) {
                 console.error('Error fetching user profile:', error);
             }
@@ -37,3 +37,4 @@ export const UserProvider = ({ children }) => {
         </UserContext.Provider>
     );
 };
+
