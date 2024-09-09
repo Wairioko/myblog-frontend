@@ -37,6 +37,7 @@ const Navbar = () => {
           <ul>
             {!isAuthenticated ? (
               <>
+                <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
                 <li><Link to="/login" onClick={toggleMenu}>Login</Link></li>
                 <li><Link to="/signup" onClick={toggleMenu}>Sign Up</Link></li>
               </>
