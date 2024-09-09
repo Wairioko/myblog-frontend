@@ -5,43 +5,40 @@ import { useState, useEffect } from "react";
 
 const UpdateBlog = () => {
     const location = useLocation();
-    const [blog, setBlog] = useState({
-        title: '',
-        description: '',
-        content: '',
-        images: []
-    });
-
     const {
-        setTitle, 
-        setContent, 
-        setDescription, 
-        handleImageChange, 
-        handleRemoveExistingImage, 
-        handleSubmit, 
-        loading, 
-        existingImageUrls = [] // Default to an empty array if undefined
+        title,
+        description,
+        content,
+        setTitle,
+        setContent,
+        setDescription,
+        handleImageChange,
+        handleRemoveExistingImage,
+        handleSubmit,
+        loading,
+        existingImageUrls = []
     } = useUpdateBlog();
 
     // Set initial blog data when component mounts or location changes
     useEffect(() => {
         if (location.state?.blog) {
-            const { title, description, content, images } = location.state.blog;
-            setBlog({
-                title: title || '',
-                description: description || '',
-                content: content || '',
-                images: images || []
-            });
+            const { title, description, content, imageUrls } = location.state.blog;
+            setTitle(title || '');
+            setDescription(description || '');
+            setContent(content || '');
+            // If imageUrls are part of the blog, set them in the hook state
+            if (imageUrls && imageUrls.length > 0) {
+                handleRemoveExistingImage(imageUrls); // Update existing image URLs
+            }
         }
-    }, [location.state?.blog]);
+    }, [location.state?.blog, setTitle, setDescription, setContent]);
 
     return (  
         <div className="update-blog">
             <form onSubmit={handleSubmit} className="update-blog-form">
                 <label>Title</label>
                 <input 
-                    value={blog.title} 
+                    value={title} 
                     type="text" 
                     name="title" 
                     onChange={(e) => setTitle(e.target.value)}
@@ -49,7 +46,7 @@ const UpdateBlog = () => {
                 
                 <label>Description</label>
                 <input 
-                    value={blog.description} 
+                    value={description} 
                     type="text" 
                     name="description" 
                     onChange={(e) => setDescription(e.target.value)}
@@ -57,7 +54,7 @@ const UpdateBlog = () => {
                 
                 <label>Content</label>
                 <textarea 
-                    value={blog.content} 
+                    value={content} 
                     name="content" 
                     onChange={(e) => setContent(e.target.value)}
                 />
@@ -97,3 +94,4 @@ const UpdateBlog = () => {
 }
 
 export default UpdateBlog;
+
