@@ -14,9 +14,9 @@ const DisplayBlog = () => {
   const { blog, isLoading, error } = UseGetBlog(id);
 
   const onDelete = async () => {
-    const { blogid } = useParams();
+   
     const authtoken = localStorage.getItem('authToken');
-    const success = await UseDeleteBlog(blogid, authtoken);
+    const success = await UseDeleteBlog(id, authtoken);
     if (success) {
         navigate('/');
     }
