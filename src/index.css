@@ -3,6 +3,8 @@
   box-sizing: border-box;
   text-decoration: none;
   color: black;
+  width: auto;
+  height: auto;
 }
 
 body {
@@ -11,6 +13,8 @@ body {
   line-height: 1.6;
   text-decoration: none;
   color: black;
+  width: auto;
+  height: auto;
 }
 
 /* Navigation */
@@ -40,7 +44,8 @@ nav {
   flex-grow: 1;
   justify-content: center;
   text-decoration: none;
-
+  margin: 0;
+  font-size: 1.5rem;
 }
 
 nav h1 {
@@ -52,11 +57,15 @@ nav h1 {
 }
 
 .nav-right ul {
-  list-style-type: none;
+  list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   gap: 1rem;
+}
+
+.nav-right li {
+  margin-left: 15px;
 }
 
 
@@ -79,26 +88,6 @@ nav h1 {
   color: #ffffff; /* Ensure text is still visible */
 }
 
-.nav-left a, /* In case they are links styled as buttons */
-.nav-left button {
-  color: #ec4af1; /* Original text color */
-  border: none;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-weight: bold;
-}
-
-/* Hover state */
-.nav-left a:hover,
-.nav- button:hover {
-  background-color: #92e1f5; /* New hover color */
-  color: #ffffff; /* Ensure text is still visible */
-}
-
-
 .nav-toggle {
   display: none;
   background: none;
@@ -120,7 +109,7 @@ nav h1 {
 
 .login-form, .signup-form {
   background-color: white;
-  padding: 2rem;
+  padding: 10px;
   border-radius: 9px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -146,6 +135,7 @@ nav h1 {
 .login-form input[type="submit"],
 .signup-form input[type="submit"] {
   background-color: #5aee73;
+  padding: 5px;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -153,13 +143,13 @@ nav h1 {
 
 /* Blog creation and update forms */
 .create-blog, .update-blog {
-  padding: 1rem;
+  padding: 10px;
   background-color: #f0f2f5;
 }
 
 .create-blog-form, .update-blog-form {
   background-color: white;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 600px;
@@ -280,7 +270,14 @@ nav h1 {
 
   .nav-right {
     display: none;
-  }
+    flex-direction: column;
+    width: 100%;
+    background-color: #333;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 15px;
+}
 
   .nav-right.active {
     display: flex;
@@ -288,7 +285,11 @@ nav h1 {
 
   .nav-right ul {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+  }
+  
+  .nav-right li {
+    margin: 10px 0;
   }
 
   .nav-toggle {
