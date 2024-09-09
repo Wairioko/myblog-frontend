@@ -14,10 +14,12 @@ const DisplayBlog = () => {
   const { blog, isLoading, error } = UseGetBlog(id);
 
   const onDelete = async () => {
-      const success = await UseDeleteBlog(id, token);
-      if (success) {
-          navigate('/');
-      }
+    const { id } = useParams();
+    const token = localStorage.getItem('authToken');
+    const success = await UseDeleteBlog(id, token);
+    if (success) {
+        navigate('/');
+    }
   };
 
   if (isLoading) return <div>Loading...</div>;
