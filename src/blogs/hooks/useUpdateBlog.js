@@ -22,6 +22,7 @@ export const useUpdateBlog = (blog = {}) => { // Add a default empty object for 
         };
 
         try {
+            console.log('Blog ID:', id);
             await updateBlog(id, newBlogData);
             navigate('/blog/' + id);
 
