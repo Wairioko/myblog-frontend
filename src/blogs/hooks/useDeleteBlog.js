@@ -8,7 +8,7 @@ const useDeleteBlog = async (id, token) => {
     if (!confirmDeletion) return;
 
     try {
-        await deleteBlog(blog._id, token);
+        await deleteBlog(id, token);
         return true;
     } catch (error) {
         console.log(error.message);
