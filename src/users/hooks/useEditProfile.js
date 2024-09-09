@@ -7,10 +7,9 @@ export const useEditProfile = () => {
     const navigate = Navigate();
     const id = useParams();
     const [username, setUsername] = useState('');
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const userData = EditProfile(id, username)
-        navigate('/')
+    const handleSubmit = () => {
+        EditProfile(id, username)
+        navigate('/profile')
     }
     return {username, setUsername, handleSubmit}
 }
