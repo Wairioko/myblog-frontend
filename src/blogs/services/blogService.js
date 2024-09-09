@@ -74,7 +74,9 @@ export const deleteBlog = async (blogid, token) => {
     }
 };
 
-export const updateBlog = async (blogData, token, blogid) => {
+
+
+export const updateBlog = async (blogid, blogData) => {
     const formData = new FormData();
     for (const key in blogData) {
         if (key === 'images') {
@@ -87,6 +89,10 @@ export const updateBlog = async (blogData, token, blogid) => {
             formData.append(key, blogData[key]);
         }
     }
+
+    const token = localStorage.getItem('authToken');
+
+    console.log(`Updating blog with ID: ${blogid}`); 
 
     try {
         const response = await axios.put(`https://myblog-backend-production.up.railway.app/api/update-blog/${blogid}`, formData, {
