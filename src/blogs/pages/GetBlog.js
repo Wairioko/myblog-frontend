@@ -22,7 +22,10 @@ const DisplayBlog = () => {
   if (error) return <div>Error: {error}</div>;
   if (!blog) return <div>No blog found</div>;
 
-  const canEditOrDelete = token && profile?.username === blog.author;
+
+  console.log("this is the profile name " + profile.username)
+
+  const canEditOrDelete = token && profile.username === blog.author;
 
   const renderContent = () => {
     if (!blog.content) return null;
