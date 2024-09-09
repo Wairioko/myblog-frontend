@@ -14,9 +14,6 @@ const Navbar = () => {
     return (
         <nav>
             <div className="nav-container">
-                <div className="nav-left">
-                    <Link to="/">Home</Link>
-                </div>
                 <div className="nav-center">
                     <Link to={'/'}>
                         <h1>MY BLOG</h1>
@@ -25,13 +22,13 @@ const Navbar = () => {
                 <button className="nav-toggle" onClick={toggleMenu}>☰</button>
                 <div className={`nav-right ${isMenuOpen ? 'active' : ''}`}>
                     <ul>
-                        {!isAuthenticated && (
+                        {!isAuthenticated ? (
                             <>
+                                <li><Link to="/">Home</Link></li>
                                 <li><Link to="/login">Login</Link></li>
                                 <li><Link to="/signup">Sign Up</Link></li>
                             </>
-                        )}
-                        {isAuthenticated && (
+                        ) : (
                             <>
                                 <li><Link to="/profile">Profile</Link></li>
                                 <li><Link to="/create-blog">Create Blog</Link></li>
@@ -43,6 +40,7 @@ const Navbar = () => {
             </div>
         </nav>
     );
+    
 }
 
 
