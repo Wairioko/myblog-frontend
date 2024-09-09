@@ -11,7 +11,6 @@ export const useUpdateBlog = (blog = {}) => { // Add a default empty object for 
     const [existingImageUrls, setExistingImageUrls] = useState(blog.imageUrls || []);
     const [isLoading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const token = localStorage.getItem('authToken');
 
     const handleSubmit = async (e) => {
         
@@ -23,8 +22,7 @@ export const useUpdateBlog = (blog = {}) => { // Add a default empty object for 
         };
 
         try {
-            
-            await updateBlog(id, token ,newBlogData);
+            await updateBlog(id, newBlogData);
             navigate('/blog/' + id);
 
         } catch (error) {
