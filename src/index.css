@@ -255,6 +255,21 @@ nav h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.nav-right {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  background-color: #333;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 10px;
+}
+
+.nav-right.active {
+  display: flex;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .nav-container {
@@ -268,26 +283,11 @@ nav h1 {
     margin-bottom: 0.5rem;
   }
 
-  .nav-right {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background-color: #333;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    padding: 15px;
-}
-
-  .nav-right.active {
-    display: flex;
-  }
-
   .nav-right ul {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .nav-right li {
     margin: 10px 0;
   }
@@ -301,11 +301,11 @@ nav h1 {
   }
 
   .login-form, .signup-form, .create-blog-form, .update-blog-form {
-    padding: 1.5rem;
+    padding: 1rem;
   }
 
   .blog-post h1 {
-    font-size: 2em;
+    font-size: 1em;
   }
 
   .image-large {
