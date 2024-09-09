@@ -3,9 +3,10 @@ import { UseGetBlog } from "../hooks/useGetBlog";
 import UseDeleteBlog from "../hooks/useDeleteBlog";
 import { useContext } from 'react';
 import { UserContext } from "../../users/userContexts/userContexts";
+import {useGetProfile } from "../../users/hooks/useGetProfile";
 
 const DisplayBlog = () => {
-  const { profile } = useContext(UserContext);
+  const { profile} = useGetProfile();
   const { id } = useParams();
   const navigate = useNavigate();
   const token = localStorage.getItem('authToken');
@@ -23,8 +24,7 @@ const DisplayBlog = () => {
   if (!blog) return <div>No blog found</div>;
 
 
-  console.log("this is the profile name " + profile.username)
-
+  
   const canEditOrDelete = token && profile.username === blog.author;
 
   const renderContent = () => {
