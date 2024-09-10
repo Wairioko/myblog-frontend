@@ -1,8 +1,8 @@
 import {useEditProfile} from "../hooks/useEditProfile"
 
-const EditProfilePage = () => {
 
-    const {username, setUsername ,handleSubmit} = useEditProfile()
+const EditProfilePage = () => {
+    const { username, setUsername, handleSubmit } = useEditProfile();
 
     return (
         <div className="edit-profile">
@@ -21,8 +21,6 @@ const EditProfilePage = () => {
             </form>
         </div>
     );
-}
-
+};
 
 export default EditProfilePage;
-
