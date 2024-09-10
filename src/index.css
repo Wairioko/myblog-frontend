@@ -42,6 +42,7 @@ nav h1 {
   color: #f2f;
   font-weight: bold;
   margin: 0;
+  text-align: center;
 }
 
 .nav-toggle {
@@ -324,3 +325,182 @@ nav h1 {
   }
 }
 
+/* Style for the edit profile container */
+.edit-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f4f8; /* Light background for contrast */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Style for the form */
+.edit-profile-form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Style for the label */
+.username-label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+  color: #333333;
+}
+
+/* Style for the input field */
+.username-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  font-size: 16px;
+}
+
+/* Style for the submit button */
+.edit-profile-form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff; /* Blue background for the button */
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the submit button */
+.edit-profile-form button[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Add some responsive styling */
+@media (max-width: 600px) {
+  .edit-profile-form {
+      padding: 15px;
+  }
+
+  .username-input {
+      font-size: 14px;
+  }
+
+  .edit-profile-form button[type="submit"] {
+      font-size: 14px;
+      padding: 8px;
+  }
+}
+/* Container for the buttons */
+.update-delete-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px; /* Space between buttons */
+  margin-top: 20px;
+}
+
+/* Base styling for both buttons */
+.update-delete-container button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Delete button styling */
+.update-delete-container button[name="delete"] {
+  background-color: #dc3545; /* Red background */
+  color: #ffffff;
+}
+
+/* Update button styling */
+.update-delete-container button[name="update-blog"] {
+  background-color: #28a745; /* Green background */
+  color: #ffffff;
+}
+
+/* Hover effect for delete button */
+.update-delete-container button[name="delete"]:hover {
+  background-color: #c82333; /* Darker red on hover */
+  transform: scale(1.05); /* Slight scaling effect */
+}
+
+/* Hover effect for update button */
+.update-delete-container button[name="update-blog"]:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: scale(1.05); /* Slight scaling effect */
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .update-delete-container {
+      flex-direction: column; /* Stack buttons vertically on small screens */
+      gap: 10px;
+  }
+
+  .update-delete-container button {
+      width: 100%;
+      padding: 12px;
+  }
+}
+
+/* Styling the update button */
+.update-blog-form input[name="update-button"] {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff; /* Blue background */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 20px;
+}
+
+/* Hover effect for update button */
+.update-blog-form input[name="update-button"]:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight scaling effect */
+}
+
+/* Disabled state styling */
+.update-blog-form input[name="update-button"]:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Styling for error messages */
+.error {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .update-blog-form {
+      padding: 20px;
+  }
+
+  .update-blog-form input[type="text"], 
+  .update-blog-form textarea {
+      font-size: 14px;
+  }
+
+  .update-blog-form input[name="update-button"] {
+      font-size: 14px;
+      padding: 8px;
+  }
+}
