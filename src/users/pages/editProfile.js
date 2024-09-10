@@ -1,6 +1,6 @@
 import {useEditProfile} from "../hooks/useEditProfile"
 
-export const EditProfilePage = () => {
+const EditProfilePage = () => {
 
     const {username, setUsername ,handleSubmit} = useEditProfile()
 
@@ -23,4 +23,6 @@ export const EditProfilePage = () => {
     );
 }
 
+
+export default EditProfilePage;
 
