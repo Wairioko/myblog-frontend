@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const LoginUser = async (userData) => {
     try {
@@ -32,6 +33,7 @@ export const UserSignUp = async (userData) => {
         alert("SignUp successful");
         localStorage.setItem("authToken", data.token);
         return data;
+        
 
     } catch (error) {
         alert("Unable to Sign Up");
