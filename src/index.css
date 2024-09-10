@@ -37,7 +37,7 @@ nav {
 .nav-center {
   position: absolute;
   right: 50%;
-  transform: translateX(-50%);
+  transform: translateX(50%);
 }
 
 nav h1 {
