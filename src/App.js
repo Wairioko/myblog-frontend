@@ -9,7 +9,7 @@ import CreateBlog from '../src/blogs/pages/CreateBlog.js';
 import GetBlog from '../src/blogs/pages/GetBlog.js';
 import UpdateBlog from '../src/blogs/pages/UpdateBlog.js';
 import ProfilePage from '../src/users/pages/profile.js';
-import {EditProfilePage} from '../src/users/pages/editProfile.js';
+import EditProfilePage from '../src/users/pages/editProfile.js';
 
 
 function App() {
