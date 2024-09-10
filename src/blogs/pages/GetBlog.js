@@ -29,7 +29,7 @@ const DisplayBlog = () => {
 
   
   const canEditOrDelete = token && profile?.username === blog.author;
-  console.log("this is the author of the blog ", profile?.username);
+  console.log("this is the author of the blog ", canEditOrDelete);
 
   const renderContent = () => {
     if (!blog.content) return null;
