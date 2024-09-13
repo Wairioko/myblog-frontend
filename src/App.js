@@ -14,21 +14,23 @@ import EditProfilePage from '../src/users/pages/editProfile.js';
 
 function App() {
   return (
-    <Router>
-      <AuthProvider>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<GetBlogs />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/create-blog" element={<CreateBlog />} />
-          <Route path="/blog/:id" element={<GetBlog />} />
-          <Route path="/update-blog/:id" element={<UpdateBlog />} />
-          <Route path='/profile' element={<ProfilePage />} />
-          <Route path='/edit-profile' element={<EditProfilePage />} />
-        </Routes>
-      </AuthProvider>
-    </Router>
+   
+    <AuthProvider>
+        <Router>
+          <Navbar />
+            <Routes>
+              <Route path="/" element={<GetBlogs />} />
+              <Route path="/signup" element={<SignUpPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/create-blog" element={<CreateBlog />} />
+              <Route path="/blog/:id" element={<GetBlog />} />
+              <Route path="/update-blog/:id" element={<UpdateBlog />} />
+              <Route path='/profile' element={<ProfilePage />} />
+              <Route path='/edit-profile' element={<EditProfilePage />} />
+            </Routes>
+        </Router>
+    </AuthProvider>
+    
   );
 }
 
